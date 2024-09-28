@@ -1,71 +1,60 @@
-#include <iostream>
+#include <cstdio>
 #include <cmath>
-
-using namespace std;
 
 int main(int argc, char* argv[])
 {
-    double a = 0;
-    double b = 0;
-    double c = 0;
+    long long a = 0;
+    long long b = 0;
+    long long c = 0;
+    scanf_s("%lld", &a);
+    scanf_s("%lld", &b);
+    scanf_s("%lld", &c);
+    int k = 0;
+    float x1 = 0;
+    float x2 = 0;
+    long long d = 0;
+    d = (b * b) - (4 * a * c);
 
-    double x1 = 0;
-    double x2 = 0;
-    double d = 0;
-    cin >> a >> b >> c;
-    if (!a && !b && !c)
-    {
-        printf("%d", -1);
-        return EXIT_SUCCESS;
-    }
-    if (a)
-    {
-        d = b * b - 4.0 * a * c;
-        if (d > 0)
-        {
-            cout << 2 << endl;
-            x1 = (-b - sqrt(d)) / (2 * a);
-            x2 = (-b + sqrt(d)) / (2 * a);
-            if (x1)
-                cout << fixed << x1;
-            else
-                cout << fixed << 0;
-            cout << endl;
-            if (x2)
-                cout << fixed << x2;
-            else
-                cout << fixed << 0;
+    if (a == 0) {
+        if (b == 0) {
+            if (c == 0) {
+                k = -1;
+                printf("%d\n", k);
+            }
+            else {
+                k = 0;
+                printf("%d\n", k);
+            }
         }
         else
-            if (!d)
-            {
-                cout << 1 << endl;
-                x1 = -b / (2 * a);
-                if (x1)
-                    cout << fixed << x1;
-                else
-                    cout << fixed << 0;
-            }
-            else
-                if (d < 0)
-                {
-                    printf("%d", 0);
-                }
-    }
-    else
-        if (b)
         {
-            cout << 1 << endl;
-            if (c)
-                x1 = -c / b;
-            else
-                x1 = 0;
-            cout << fixed << x1;
+            k = 1;
+            x1 = -c / (double)b;
+            printf("%d\n", k);
+            printf("%f\n", x1);
         }
-        else
-            if (c)
-            {
-                printf("%d", 0);
-            }
+    }
+    else if (a != 0 && d > 0)
+    {
+        k = 2;
+        x1 = (-b + sqrt(d)) / (2 * (double)a);
+        x2 = (-b - sqrt(d)) / (2 * (double)a);
+        printf("%d\n", k);
+        printf("%f\n", x1);
+        printf("%f\n", x2);
+    }
+    else if (a != 0 && d == 0)
+    {
+        k = 1;
+        printf("%d\n", k);
+        x1 = -b / (2 * (double)a);
+        printf("%f\n", x1);
+    }
+    else if (a != 0 && d < 0)
+    {
+        k = 0;
+        printf("%d\n", k);
+    }
+
     return EXIT_SUCCESS;
 }
